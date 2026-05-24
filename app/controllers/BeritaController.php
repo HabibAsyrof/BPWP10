@@ -19,7 +19,7 @@ class BeritaController{
 
     public function simpan(){
         $judul = $_POST['judul'];
-        $deksripsi = $ $_POST['deksripsi'];
+        $deksripsi = $_POST['deksripsi'];
         $tanggal = $_POST['tanggal'];
         $foto = $_FILES['foto']['name'];
         $tmp = $_FILES['foto']['tmp_name'];
