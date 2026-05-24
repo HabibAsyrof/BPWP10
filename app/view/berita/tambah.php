@@ -163,45 +163,60 @@
 
                     <section class="panel">
                         <div class="panel-header">
-                            <div>
-                                <h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>Advanced Table</span></h2>
-                                <p class="text-muted mb-0">Searchable responsive table for orders and customer data.</p>
-                            </div><input class="form-control form-control-sm table-search" type="search" placeholder="Search orders" data-table-search="ordersTable" aria-label="Search orders">
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table align-middle mb-0" id="ordersTable" data-searchable-table>
+                            <div class="panel-body p-4">
+                                <form action="?aksi=simpan" method="POST"
 
-                                <thead>
-                                    <tr>
+                                    enctype="multipart/form-data">
 
-                                        <th>No</th>
-                                        <th>Judul</th>
-                                        <th>Deskripsi</th>
-                                        <th>Foto</th>+
-                                        <th>Tanggal</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $no = 1;
-                                    while ($row = mysqli_fetch_assoc($halo)) {
-                                    ?>
-                                        <tr>
-                                            <td><?= $no++; ?></td>
-                                            <td><?= $row['judul']; ?></td>
-                                            <td><?= $row['deksripsi']; ?></td>
+                                    <div class="mb-3">
+                                        <label
 
-                                            <td>
-                                                <img
-                                                    src="public/uploads/<?= $row['foto']; ?>"
-                                                    width="100">
-                                            </td>
-                                            <td><?= $row['tanggal']; ?></td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
+                                            class="form-label">Judul</label>
+
+                                        <input type="text" name="judul"
+                                            class="form-control" placeholder="Masukkan judul berita" required>
+
+                                    </div>
+                                    <div class="mb-3">
+                                        <label
+                                            class="form-label">Deskripsi</label>
+
+                                        <textarea name="deksripsi"
+                                            class="form-control" rows="5" placeholder="Masukkan deskripsi berita"
+                                            required></textarea>
+
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Foto</label>
+                                        <input type="file" name="foto"
+
+                                            class="form-control">
+
+                                    </div>
+                                    <div class="mb-3">
+                                        <label
+                                            class="form-label">Tanggal</label>
+
+                                        <input type="date" name="tanggal"
+
+                                            class="form-control" required>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <button type="submit" name="simpan"
+
+                                            class="btn btn-primary">
+
+                                            <i class="bi bi-save"></i>Simpan
+                                        </button>
+                                        <a href="?aksi=index" class="btnbtn-secondary">
+
+                                            <i class="bi bi-arrow-left"></i>
+                                            Kembali
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
                     </section>
                 </div>
             </main>

@@ -1,5 +1,5 @@
 <?php
-require_once 'app/controllers/BeritaController.php';
+include 'app/controllers/BeritaController.php';
 
 $controller = new BeritaController;
 
@@ -10,7 +10,14 @@ switch ($aksi) {
     default:
         $controller->index();
         break;
+        case 'tambah':
+            $controller->tambah();
+            break;
+        case 'simpan':
+            $controller->simpan();
+            break;
 }
+
 
 ?>
 

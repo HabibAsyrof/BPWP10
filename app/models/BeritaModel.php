@@ -1,5 +1,5 @@
 <?php
-require_once 'config/koneksi.php';
+include 'config/koneksi.php';
 
 class BeritaModel{
     private $conn;
@@ -16,4 +16,11 @@ class BeritaModel{
         );
         return $query;
     }
+
+    public function insert($judul,$deksripsi,$foto,$tanggal){
+        $query = "insert into berita (judul, deksripsi, foto, tanggal)
+        values ('$judul','$deksripsi'.'$foto','$tanggal')";
+        return mysqli_query($this->conn,$query);
+    }
+    
 }
