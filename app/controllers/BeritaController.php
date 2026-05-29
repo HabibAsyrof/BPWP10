@@ -9,7 +9,7 @@ class BeritaController{
     }
 
     public function index(){
-        $halo = $this->model->getAll();
+        $berita = $this->model->getAll();
         include 'app/view/berita/index.php';
     }
 
@@ -19,19 +19,52 @@ class BeritaController{
 
     public function simpan(){
         $judul = $_POST['judul'];
-        $deksripsi = $_POST['deksripsi'];
+        $deksripsi = $_POST['deskripsi'];
         $tanggal = $_POST['tanggal'];
         $foto = $_FILES['foto']['name'];
         $tmp = $_FILES['foto']['tmp_name'];
 
         move_uploaded_file(
-            $tmp, 'public/upload/' . $foto
+            $tmp, 'public/uploads/' . $foto
         );
 
         $this->model->insert(
             $judul,$deksripsi,$foto,$tanggal
         );
         header('Location:index.php');
+    }
+
+    public function edit(){
+        $id = $_GET['id'];
+        $berita = $this->model->getById($id);
+         include 'app/view/berita/edit.php';
+    }
+
+    public function update(){
+        $id = $_POST['id'];
+        $judul = $_POST['judul'];
+        $deskripsi = $_POST['deskripsi'];
+        $foto = $_FILES['foto']['name'];
+        $tanggal = $_POST['tanggal'];
+        $tmp = $_FILES['foto']['tmp_name'];
+
+        if($foto != ''){
+            move_uploaded_file(
+                $tmp,
+                'public/uploads/' . $foto
+            );
+        }else{
+            $data = $this->model->getById($id);
+            $foto = $data['foto'];
+        }
+        $this->model->update(
+            $id,
+            $judul,
+            $deskripsi,
+            $foto,
+            $tanggal
+        );
+        header('Location:index.php?aksi=index');
     }
     
 }

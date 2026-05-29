@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,9 +8,9 @@
     <meta name="description" content="adminHMD professional admin dashboard template">
     <title>Tables | Dashboard</title>
 
-    <link rel="stylesheet" href="/P10/public/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/P10/public/assets/vendors/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="/P10/public/assets/css/style.css">
+    <link rel="stylesheet" href="/BPWP10/public/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/BPWP10/public/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/BPWP10/public/assets/css/style.css">
 </head>
 
 <body>
@@ -52,7 +53,7 @@
                     <span class="nav-icon"><i class="bi bi-table" aria-hidden="true"></i></span>
                     <span class="nav-text">Tables</span>
                 </a>
-                <a class="nav-link" href="forms.html">
+                <a class="nav-link" href="?aksi=tambah">
                     <span class="nav-icon"><i class="bi bi-ui-checks-grid" aria-hidden="true"></i></span>
                     <span class="nav-text">Forms</span>
                 </a>
@@ -170,33 +171,38 @@
                         </div>
                         <div class="table-responsive">
                             <table class="table align-middle mb-0" id="ordersTable" data-searchable-table>
-
+                                <button class="btn btn-primary"><a href="?aksi=tambah" style="color:white;">Tambah</a></button>
                                 <thead>
                                     <tr>
-
                                         <th>No</th>
                                         <th>Judul</th>
                                         <th>Deskripsi</th>
-                                        <th>Foto</th>+
+                                        <th>Foto</th>
                                         <th>Tanggal</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     $no = 1;
-                                    while ($row = mysqli_fetch_assoc($halo)) {
+                                    while ($row = mysqli_fetch_assoc($berita)) {
                                     ?>
                                         <tr>
                                             <td><?= $no++; ?></td>
                                             <td><?= $row['judul']; ?></td>
-                                            <td><?= $row['deksripsi']; ?></td>
+                                            <td><?= $row['deskripsi']; ?></td>
 
                                             <td>
-                                                <img
-                                                    src="public/uploads/<?= $row['foto']; ?>"
-                                                    width="100">
+                                                <img src="public/uploads/<?= $row['foto']; ?>" width="100">
                                             </td>
                                             <td><?= $row['tanggal']; ?></td>
+                                            <td>
+                                                <a href="?aksi=edit&id=<?= $row['id'] ?>"
+                                                class="btn btn-warning btn-sm">
+                                                <i class="bi bi-pencil-square"></i>
+
+                                                </a>
+                                            </td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
@@ -215,8 +221,8 @@
             </footer>
         </div>
     </div>
-    <script src="/P10/public/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/P10/public/assets/js/main.js"></script>
+    <script src="public/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="public/assets/js/main.js"></script>
 </body>
 
 </html>
