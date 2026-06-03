@@ -19,6 +19,7 @@ class BeritaController{
 
     public function simpan(){
         $judul = $_POST['judul'];
+        $kategori = $_POST['kategori'];
         $deksripsi = $_POST['deskripsi'];
         $tanggal = $_POST['tanggal'];
         $foto = $_FILES['foto']['name'];
@@ -29,7 +30,7 @@ class BeritaController{
         );
 
         $this->model->insert(
-            $judul,$deksripsi,$foto,$tanggal
+            $judul,$kategori,$deksripsi,$foto,$tanggal
         );
         header('Location:index.php');
     }
@@ -43,6 +44,7 @@ class BeritaController{
     public function update(){
         $id = $_POST['id'];
         $judul = $_POST['judul'];
+        $kategori = $_POST['kategori'];
         $deskripsi = $_POST['deskripsi'];
         $foto = $_FILES['foto']['name'];
         $tanggal = $_POST['tanggal'];
@@ -60,11 +62,36 @@ class BeritaController{
         $this->model->update(
             $id,
             $judul,
+            $kategori,
             $deskripsi,
             $foto,
             $tanggal
         );
         header('Location:index.php?aksi=index');
+    }
+
+    public function hapus(){
+        $id = $_GET['id'];
+        $data = $this->model->getById($id);
+        if($data && $data['foto'] != ''){
+            $path_foto = 'public/uploads/' . $data['foto'];
+            if(file_exists ($path_foto)){
+                unlink($path_foto);
+            }
+        }
+        $this->model->delete($id);
+        header('Location:index.php');
+    }
+
+    public function frontend(){
+        $berita = $this->model->getAll();
+        include 'app/view/frontend/depan.php';
+    }
+
+    public function detail(){
+        $id = $_GET['id'];
+        $berita = $this->model->getById($id);
+        include 'app/view/frontend/detail.php';
     }
     
 }

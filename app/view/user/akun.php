@@ -28,13 +28,13 @@
             </div>
 
             <nav class="sidebar-nav">
-                
+
                 <a class="nav-link" href="?aksi=viewuser">
                     <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
                     <span class="nav-text">Users</span>
                 </a>
 
-                <a class="nav-link" href="?aksi=tambah">
+                <a class="nav-link" href="?aksi=index">
                     <span class="nav-icon"><i class="bi bi-ui-checks-grid" aria-hidden="true"></i></span>
                     <span class="nav-text">Forms</span>
                 </a>
@@ -125,74 +125,54 @@
 
                     <section class="panel">
                         <div class="panel-header">
-                            <div class="panel-body p-4">
-                                <form action="?aksi=simpan" method="POST"
+                            <div>
+                                <h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>Advanced Table</span></h2>
+                                <p class="text-muted mb-0">Searchable responsive table for orders and customer data.</p>
+                            </div><input class="form-control form-control-sm table-search" type="search" placeholder="Search orders" data-table-search="ordersTable" aria-label="Search orders">
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table align-middle mb-0" id="ordersTable" data-searchable-table>
+                                <button class="btn btn-primary"><a href="?aksi=tambahuser" style="color:white;">Tambah</a></button>
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>id</th>
+                                        <th>Email</th>
+                                        <th>Nama</th>
+                                        <th>Jabatan</th>
 
-                                    enctype="multipart/form-data">
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $no = 1;
+                                    while ($row = mysqli_fetch_assoc($akun)) {
+                                    ?>
+                                        <tr>
+                                            <td><?= $no++; ?></td>
+                                            <td><?= $row['id']; ?></td>
+                                            <td><?= $row['email']; ?></td>
+                                            <td><?= $row['nama']; ?></td>
+                                            <td><?= $row['jabatan']; ?></td>
 
-                                    <div class="mb-3">
-                                        <label
+                                            <td style="display: block; gap: 5px;">
+                                                <a href="?aksi=edituser&id=<?= $row['id'] ?>"
+                                                    class="btn btn-warning btn-sm">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </a>
+                                                <a href="?aksi=hapus&id=<?php echo $row['id']; ?>"
+                                                    class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus berita ini?')">
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
+                                            </td>
 
-                                            class="form-label">Judul</label>
-
-                                        <input type="text" name="judul"
-                                            class="form-control" placeholder="Masukkan judul berita" required>
-
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label>Kategori</label>
-
-                                        <select name="kategori" class="form-control" required>
-                                            <option value="">-- Pilih Kategori --</option>
-                                            <option value="Teknologi">Teknologi</option>
-                                            <option value="Olahraga">Olahraga</option>
-                                            <option value="Pendidikan">Pendidikan</option>
-                                            <option value="Politik">Politik</option>
-                                            <option value="Hiburan">Hiburan</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label
-                                            class="form-label">Deskripsi</label>
-
-                                        <textarea name="deskripsi"
-                                            class="form-control" rows="5" placeholder="Masukkan deskripsi berita"
-                                            required></textarea>
-
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label">Foto</label>
-                                        <input type="file" name="foto"
-
-                                            class="form-control">
-
-                                    </div>
-                                    <div class="mb-3">
-                                        <label
-                                            class="form-label">Tanggal</label>
-
-                                        <input type="date" name="tanggal"
-
-                                            class="form-control" required>
-                                    </div>
-                                    <div class="d-flex gap-2">
-                                        <button type="submit" name="simpan"
-
-                                            class="btn btn-primary">
-
-                                            <i class="bi bi-save"></i>Simpan
-                                        </button>
-                                        <a href="?aksi=index" class="btnbtn-secondary">
-
-                                            <i class="bi bi-arrow-left"></i>
-                                            Kembali
-                                        </a>
-                                    </div>
-                                </form>
-                            </div>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </section>
                 </div>
             </main>
@@ -206,8 +186,8 @@
             </footer>
         </div>
     </div>
-    <script src="/BPWP10/public/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/BPWP10/public/assets/js/main.js"></script>
+    <script src="public/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="public/assets/js/main.js"></script>
 </body>
 
 </html>

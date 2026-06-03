@@ -17,9 +17,9 @@ class BeritaModel {
         return $query;
     }
 
-    public function insert( $judul, $deskripsi, $foto, $tanggal ) {
-        $query = "insert into berita (judul, deskripsi, foto, tanggal)
-        values ('$judul','$deskripsi','$foto','$tanggal')";
+    public function insert( $judul, $kategori, $deskripsi, $foto, $tanggal ) {
+        $query = "insert into berita (judul, kategori, deskripsi, foto, tanggal)
+        values ('$judul','$kategori','$deskripsi','$foto','$tanggal')";
         return mysqli_query( $this->conn, $query );
     }
 
@@ -31,17 +31,29 @@ class BeritaModel {
         return mysqli_fetch_assoc( $query );
     }
 
-    public function update($id, $judul, $deskripsi, $foto, $tanggal){
+    public function update(
+        $id, 
+        $judul, 
+        $kategori, 
+        $deskripsi, 
+        $foto, 
+        $tanggal)
+        {
         $query = "update berita set 
         judul ='$judul', 
+        kategori = '$kategori',
         deskripsi = '$deskripsi', 
         tanggal = '$tanggal',
         foto = '$foto'
         where id = '$id'";
-    
-    
+        
         return mysqli_query($this->conn, $query);
         
+    }
+    
+    public function delete($id){
+        $query = "delete from berita where id = '$id'";
+        return mysqli_query($this->conn, $query);
     }
 
 }

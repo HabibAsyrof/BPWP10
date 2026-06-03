@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,53 +28,15 @@
             </div>
 
             <nav class="sidebar-nav">
-                <a class="nav-link" href="index.html">
-                    <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
-                    <span class="nav-text">Dashboard</span>
-                </a>
-                <a class="nav-link" href="users.html">
+
+                <a class="nav-link" href="?aksi=viewuser">
                     <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
                     <span class="nav-text">Users</span>
                 </a>
-                <a class="nav-link" href="add-user.html">
-                    <span class="nav-icon"><i class="bi bi-person-plus" aria-hidden="true"></i></span>
-                    <span class="nav-text">Add User</span>
-                </a>
-                <a class="nav-link" href="profile.html">
-                    <span class="nav-icon"><i class="bi bi-person-badge" aria-hidden="true"></i></span>
-                    <span class="nav-text">Profile</span>
-                </a>
-                <a class="nav-link" href="charts.html">
-                    <span class="nav-icon"><i class="bi bi-bar-chart-line" aria-hidden="true"></i></span>
-                    <span class="nav-text">Charts</span>
-                </a>
-                <a class="nav-link active" href="tables.html" aria-current="page">
-                    <span class="nav-icon"><i class="bi bi-table" aria-hidden="true"></i></span>
-                    <span class="nav-text">Tables</span>
-                </a>
-                <a class="nav-link" href="?aksi=tambah">
+
+                <a class="nav-link" href="?aksi=index">
                     <span class="nav-icon"><i class="bi bi-ui-checks-grid" aria-hidden="true"></i></span>
                     <span class="nav-text">Forms</span>
-                </a>
-                <a class="nav-link" href="components.html">
-                    <span class="nav-icon"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i></span>
-                    <span class="nav-text">Components</span>
-                </a>
-                <a class="nav-link" href="alerts.html">
-                    <span class="nav-icon"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i></span>
-                    <span class="nav-text">Alerts</span>
-                </a>
-                <a class="nav-link" href="modals.html">
-                    <span class="nav-icon"><i class="bi bi-window-stack" aria-hidden="true"></i></span>
-                    <span class="nav-text">Modals</span>
-                </a>
-                <a class="nav-link" href="settings.html">
-                    <span class="nav-icon"><i class="bi bi-gear" aria-hidden="true"></i></span>
-                    <span class="nav-text">Settings</span>
-                </a>
-                <a class="nav-link" href="blank.html">
-                    <span class="nav-icon"><i class="bi bi-file-earmark" aria-hidden="true"></i></span>
-                    <span class="nav-text">Blank Page</span>
                 </a>
             </nav>
 
@@ -176,6 +137,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Judul</th>
+                                        <th>Kategori</th>
                                         <th>Deskripsi</th>
                                         <th>Foto</th>
                                         <th>Tanggal</th>
@@ -190,6 +152,7 @@
                                         <tr>
                                             <td><?= $no++; ?></td>
                                             <td><?= $row['judul']; ?></td>
+                                            <td><?= $row['kategori']; ?></td>
                                             <td><?= $row['deskripsi']; ?></td>
 
                                             <td>
@@ -198,9 +161,13 @@
                                             <td><?= $row['tanggal']; ?></td>
                                             <td>
                                                 <a href="?aksi=edit&id=<?= $row['id'] ?>"
-                                                class="btn btn-warning btn-sm">
-                                                <i class="bi bi-pencil-square"></i>
-
+                                                    class="btn btn-warning btn-sm">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </a>
+                                                <a href="?aksi=hapus&id=<?php echo $row['id']; ?>"
+                                                    class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus berita ini?')">
+                                                    <i class="bi bi-trash"></i>
                                                 </a>
                                             </td>
                                         </tr>

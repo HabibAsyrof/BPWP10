@@ -27,7 +27,7 @@
                 </a>
             </div>
 
-             <nav class="sidebar-nav">
+            <nav class="sidebar-nav">
 
                 <a class="nav-link" href="?aksi=viewuser">
                     <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
@@ -153,53 +153,15 @@
                                 </div>
 
                                 <nav class="sidebar-nav">
-                                    <a class="nav-link" href="index.html">
-                                        <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
-                                        <span class="nav-text">Dashboard</span>
-                                    </a>
-                                    <a class="nav-link" href="users.html">
+
+                                    <a class="nav-link" href="?aksi=viewuser">
                                         <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
                                         <span class="nav-text">Users</span>
                                     </a>
-                                    <a class="nav-link" href="add-user.html">
-                                        <span class="nav-icon"><i class="bi bi-person-plus" aria-hidden="true"></i></span>
-                                        <span class="nav-text">Add User</span>
-                                    </a>
-                                    <a class="nav-link" href="profile.html">
-                                        <span class="nav-icon"><i class="bi bi-person-badge" aria-hidden="true"></i></span>
-                                        <span class="nav-text">Profile</span>
-                                    </a>
-                                    <a class="nav-link" href="charts.html">
-                                        <span class="nav-icon"><i class="bi bi-bar-chart-line" aria-hidden="true"></i></span>
-                                        <span class="nav-text">Charts</span>
-                                    </a>
-                                    <a class="nav-link active" href="tables.html" aria-current="page">
-                                        <span class="nav-icon"><i class="bi bi-table" aria-hidden="true"></i></span>
-                                        <span class="nav-text">Tables</span>
-                                    </a>
-                                    <a class="nav-link" href="forms.html">
+
+                                    <a class="nav-link" href="?aksi=index">
                                         <span class="nav-icon"><i class="bi bi-ui-checks-grid" aria-hidden="true"></i></span>
                                         <span class="nav-text">Forms</span>
-                                    </a>
-                                    <a class="nav-link" href="components.html">
-                                        <span class="nav-icon"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i></span>
-                                        <span class="nav-text">Components</span>
-                                    </a>
-                                    <a class="nav-link" href="alerts.html">
-                                        <span class="nav-icon"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i></span>
-                                        <span class="nav-text">Alerts</span>
-                                    </a>
-                                    <a class="nav-link" href="modals.html">
-                                        <span class="nav-icon"><i class="bi bi-window-stack" aria-hidden="true"></i></span>
-                                        <span class="nav-text">Modals</span>
-                                    </a>
-                                    <a class="nav-link" href="settings.html">
-                                        <span class="nav-icon"><i class="bi bi-gear" aria-hidden="true"></i></span>
-                                        <span class="nav-text">Settings</span>
-                                    </a>
-                                    <a class="nav-link" href="blank.html">
-                                        <span class="nav-icon"><i class="bi bi-file-earmark" aria-hidden="true"></i></span>
-                                        <span class="nav-text">Blank Page</span>
                                     </a>
                                 </nav>
 
@@ -289,57 +251,33 @@
                                         <section class="panel">
                                             <div class="panel-header">
                                                 <div class="panel-body p-4">
-                                                    <form action="?aksi=update" method="POST"
+                                                    <form action="?aksi=updateuser" method="POST"
                                                         enctype="multipart/form-data">
-                                                        <input type="hidden" name="id" value="<?= $berita['id'] ?>">
+                                                        <input type="hidden" name="id" value="<?= $akun['id'] ?>">
                                                         <div class="mb-3">
                                                             <label
-                                                                class="form-label">Judul</label>
-                                                            <input type="text" name="judul" class="form-control"
-                                                                value="<?= $berita['judul'] ?>" required>
+                                                                class="form-label">Email</label>
+                                                            <input type="email" name="email" class="form-control"
+                                                                value="<?= $akun['email'] ?>" required>
                                                         </div>
+
                                                         <div class="mb-3">
-                                                            <label>Kategori</label>
-                                                            <select name="kategori" class="form-control">
-                                                                <option value="Teknologi"
-                                                                    <?= ($berita['kategori'] == 'Teknologi') ? 'selected' : '' ?>>
-                                                                    Teknologi
-                                                                </option>
-                                                                <option value="Olahraga"
-                                                                    <?= ($berita['kategori'] == 'Olahraga') ? 'selected' : '' ?>>
-                                                                    Olahraga
-                                                                </option>
-                                                                <option value="Pendidikan"
-                                                                    <?= ($berita['kategori'] == 'Pendidikan') ? 'selected' : '' ?>>
-                                                                    Pendidikan
-                                                                </option>
-                                                                <option value="Politik"
-                                                                    <?= ($berita['kategori'] == 'Politik') ? 'selected' : '' ?>>
-                                                                    Politik
-                                                                </option>
-                                                                <option value="Hiburan"
-                                                                    <?= ($berita['kategori'] == 'Hiburan') ? 'selected' : '' ?>>
-                                                                    Hiburan
-                                                                </option>
-                                                            </select>
+                                                            <label
+                                                                class="form-label">Nama</label>
+                                                            <input type="text" name="nama" class="form-control"
+                                                                value="<?= $akun['nama'] ?>" required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label
-                                                                class="form-label">Deskripsi</label>
-                                                            <textarea name="deskripsi"
-                                                                class="form-control" rows="5" placeholder="Masukkan deskripsi berita"
-                                                                required><?= $berita['deskripsi'] ?></textarea>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Foto</label>
-                                                            <input type="file" name="foto"
-                                                                class="form-control">
+                                                                class="form-label">Jabatan</label>
+                                                            <input type="text" name="jabatan" class="form-control"
+                                                                value="<?= $akun['jabatan'] ?>" required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label
-                                                                class="form-label">Tanggal</label>
-                                                            <input type="date" name="tanggal"
-                                                                class="form-control" value="<?= $berita['tanggal'] ?>" required>
+                                                                class="form-label">Password</label>
+                                                            <input type="password" name="password" class="form-control"
+                                                                value="<?= $akun['password'] ?>" required>
                                                         </div>
                                                         <div class="d-flex gap-2">
                                                             <button type="submit" name="simpan"
@@ -383,8 +321,8 @@
             </footer>
         </div>
     </div>
-    <script src="/habib/BPWP10/public/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/habib/BPWP10/public/assets/js/main.js"></script>
+    <script src="/BPWP10/public/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/BPWP10/public/assets/js/main.js"></script>
 </body>
 
 </html>

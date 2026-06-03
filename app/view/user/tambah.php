@@ -28,7 +28,7 @@
             </div>
 
             <nav class="sidebar-nav">
-                
+
                 <a class="nav-link" href="?aksi=viewuser">
                     <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
                     <span class="nav-text">Users</span>
@@ -126,67 +126,42 @@
                     <section class="panel">
                         <div class="panel-header">
                             <div class="panel-body p-4">
-                                <form action="?aksi=simpan" method="POST"
-
+                                <form action="?aksi=simpanuser" method="POST"
                                     enctype="multipart/form-data">
-
                                     <div class="mb-3">
                                         <label
-
-                                            class="form-label">Judul</label>
-
-                                        <input type="text" name="judul"
-                                            class="form-control" placeholder="Masukkan judul berita" required>
-
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label>Kategori</label>
-
-                                        <select name="kategori" class="form-control" required>
-                                            <option value="">-- Pilih Kategori --</option>
-                                            <option value="Teknologi">Teknologi</option>
-                                            <option value="Olahraga">Olahraga</option>
-                                            <option value="Pendidikan">Pendidikan</option>
-                                            <option value="Politik">Politik</option>
-                                            <option value="Hiburan">Hiburan</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label
-                                            class="form-label">Deskripsi</label>
-
-                                        <textarea name="deskripsi"
-                                            class="form-control" rows="5" placeholder="Masukkan deskripsi berita"
-                                            required></textarea>
-
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label">Foto</label>
-                                        <input type="file" name="foto"
-
-                                            class="form-control">
-
+                                            class="form-label">email</label>
+                                        <input type="text" name="email"
+                                            class="form-control" placeholder="Masukkan email" required>
                                     </div>
                                     <div class="mb-3">
                                         <label
-                                            class="form-label">Tanggal</label>
+                                            class="form-label">Nama</label>
+                                        <input type="text" name="nama"
+                                            class="form-control" placeholder="Masukkan nama" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label
+                                            class="form-label">Jabatan</label>
+                                        <input type="text" name="jabatan"
+                                            class="form-control" placeholder="Masukkan jabatan" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label
+                                            class="form-label">Password</label>
 
-                                        <input type="date" name="tanggal"
-
-                                            class="form-control" required>
+                                        <input type="password" name="password"
+                                            class="form-control" placeholder="Masukkan password" required>
+                                    </div>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <button type="submit" name="simpan"
+                                        <button type="submit" name="simpanuser"
 
                                             class="btn btn-primary">
 
                                             <i class="bi bi-save"></i>Simpan
                                         </button>
-                                        <a href="?aksi=index" class="btnbtn-secondary">
-
+                                        <a href="?aksi=viewuser" class="btnbtn-secondary">
                                             <i class="bi bi-arrow-left"></i>
                                             Kembali
                                         </a>
