@@ -46,6 +46,17 @@ class userModel {
         $query = "DELETE FROM user WHERE id='$id'";
         return mysqli_query( $this->conn, $query );
     }
+
+     public function getByEmail($email){
+        $query = mysqli_query(
+            $this->conn,
+            "select * from user 
+            where email='$email'"
+        );
+        return mysqli_fetch_assoc($query);
+    }
+
+    
 }
 
 ?>
